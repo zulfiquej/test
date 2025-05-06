@@ -1,0 +1,24 @@
+﻿@model EventEaseBooking.Models.Venue
+
+
+@{
+    ViewData["Title"] = "Venue Details";
+}
+
+<h2>Venue Details</h2>
+
+<div class="card mb-3">
+    <div class="card-body">
+        <h3 class="card-title">@Model.Name</h3>
+        <p class="card-text"><strong>Location:</strong> @Model.Location</p>
+        <p class="card-text"><strong>Capacity:</strong> @Model.Capacity</p>
+        <p class="card-text"><strong>Description:</strong> @Model.Description ?? "N/A"</p>
+        @if (!string.IsNullOrEmpty(Model.ImageUrl))
+        {
+            <div class="mb-3">
+                <img src="@Model.ImageUrl" alt="Venue Image" class="img-fluid rounded" />
+            </div>
+        }
+        <a asp-action="Index" class="btn btn-secondary">Back to List</a>
+    </div>
+</div>

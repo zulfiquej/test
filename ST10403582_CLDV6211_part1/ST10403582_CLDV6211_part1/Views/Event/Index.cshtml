@@ -1,0 +1,36 @@
+﻿@model IEnumerable<EventEaseBooking.Models.Event>
+
+@{
+    ViewData["Title"] = "Events";
+}
+
+<h2>Events</h2>
+<table class="table">
+    <thead>
+        <tr>
+            <th>Name</th>
+            <th>Date</th>
+            <th>Venue</th>
+            <th>Actions</th>
+        </tr>
+    </thead>
+    <tbody>
+        @foreach (var eventItem in Model)
+        {
+            <tr>
+                <td>@eventItem.Name</td>
+                <td>@eventItem.StartDate.ToShortDateString()</td> <!-- Using StartDate instead of EventDate -->
+                <td>
+                    <img src="@eventItem.ImageUrl"alt="Event Image" width="200"height="200"/>
+                </td>
+
+                <td>
+                    <a asp-action="Details" asp-route-id="@eventItem.Id" class="btn btn-info">View</a>
+                    <a asp-action="Edit" asp-route-id="@eventItem.Id" class="btn btn-warning">Edit</a>
+                    <a asp-action="Delete" asp-route-id="@eventItem.Id" class="btn btn-danger">Delete</a>
+                </td>
+            </tr>
+        }
+    </tbody>
+</table>
+<a asp-action="Create" class="btn btn-primary">New Event</a>

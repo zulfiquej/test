@@ -1,0 +1,10 @@
+﻿@model EventEaseBooking.Models.Booking
+
+<h2>Booking Details</h2>
+<p><strong>Customer Name:</strong> @Model.CustomerName</p>
+<p><strong>Email:</strong> @Model.CustomerEmail</p>
+<p><strong>Event:</strong> @(Model.Event?.Name ?? "N/A")</p>
+<p><strong>Booking Date:</strong> @Model.BookingDate.ToShortDateString()</p>
+
+<a asp-action="Index" class="btn btn-secondary">Back</a>
+<a asp-action="Edit" asp-route-id="@Model.Id" class="btn btn-warning">Edit</a>
